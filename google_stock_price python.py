@@ -8,7 +8,7 @@ import plotly.express as px
 import seaborn as sns
 import pandas as pd
 import matplotlib.pyplot as plt
-gsp=pd.read_csv("C:\\Users\\aaa\\Downloads\\GOOGLE.csv", delimiter=';', header=0)
+gsp=pd.read_csv("C:\\Users\\aaa\\Downloads\\GOOGLE.csv", delimiter=',', header=0)
 print(gsp)
 print(gsp.columns)
 
@@ -31,14 +31,10 @@ plt.legend()
 plt.grid(True)
 plt.show()
 
-
+# Plot the correlation matrix
 file=gsp[['Volume','Open','High','Low','Close', 'Adj Close']]
 correlation_matrix = file.corr()
 print(correlation_matrix)
-
-import sys
-print(sys.executable)
-
 
 
 # Create a heatmap using Seaborn
@@ -89,19 +85,3 @@ plt.ylabel('Volume')
 plt.show()
 
 
-import plotly.graph_objects as go
-# Create candlestick chart
-fig = go.Figure(data=[go.Candlestick(x=gsp['Date'],
-                                     open=gsp['Open'],
-                                     high=gsp['High'],
-                                     low=gsp['Low'],
-                                     close=gsp['Close'])])
-
-# Customize layout
-fig.update_layout(title='Candlestick Chart with Plotly',
-                  xaxis_title='Date',
-                  yaxis_title='Price',
-                  xaxis_rangeslider_visible=False)
-
-# Show the plot
-fig.show()
